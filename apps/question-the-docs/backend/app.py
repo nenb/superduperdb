@@ -6,6 +6,7 @@ from pymongo import MongoClient
 
 
 
+
 def init_routers(app: FastAPI) -> None:
     app.include_router(document_router)
 
@@ -16,10 +17,9 @@ def create_app() -> FastAPI:
     @_app.on_event("startup")
     def startup_db_client():
         _app.mongodb_client = MongoClient(settings.DB_URL)
-        _client = _app.mongodb_client[settings.DB_NAME]
-        _app.mongodb = _client
+        _app.mongodb = _app.mongodb_client[settings.DB_NAME]
 
-        setup_qa_documentation(_client)
+        setup_qa_documentation(_app.mongodb_client)
 
 
 

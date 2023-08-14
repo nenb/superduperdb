@@ -1,7 +1,7 @@
 # API Server
 fastapi
 uvicorn[standard]
-pydantic[email]
+pydantic[email]<2
 
 # Development
 pip-tools
