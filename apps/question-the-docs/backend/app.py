@@ -1,9 +1,9 @@
 from backend.config import settings
 from backend.document.routes import document_router
+from backend.ai.bot import setup_qa_documentation
 from fastapi import FastAPI
 from pymongo import MongoClient
 
-from .ai.bot import setup_qa_documentation
 
 
 def init_routers(app: FastAPI) -> None:
