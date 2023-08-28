@@ -93,8 +93,8 @@ jobs:
 
       - name: create release
         run: >
-          gh release create ${{ needs.test-build.outputs.package_version }} --repo ${{ github.repository }}
-          ${{ github.ref_name }} --generate-notes
+          gh release create ${{ needs.test-build.outputs.package_version }}
+          --repo ${{ github.repository }} --generate-notes
           artifact/*
         env:
           GH_TOKEN: ${{ github.token }}
