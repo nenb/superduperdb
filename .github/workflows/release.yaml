@@ -10,7 +10,6 @@ on:  # rules for when this action will be triggered
     paths-ignore:
       - 'docs/**'
       - '*.md'
-      - '*.rst'
   workflow_dispatch:  # allows triggering a github action manually - see 'Actions' tab
 
 jobs:
