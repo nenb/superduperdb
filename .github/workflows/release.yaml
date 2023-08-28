@@ -4,7 +4,6 @@ on:  # rules for when this action will be triggered
     paths-ignore:  # ignore docs in this action - handled in a separate action
       - 'docs/**'
       - '*.md'
-      - '*.rst'
   pull_request:
     branches:
       - main
