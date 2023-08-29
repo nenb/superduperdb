@@ -3,11 +3,12 @@ on:
   push:
     branches:
       - main
-    tags: [ 'v*.*.*' ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Important: We use the commit message as a trigger for each job
+    if: contains(github.event.head_commit.message, 'Update to version')
     defaults:
         run:
           shell: bash
@@ -41,6 +42,8 @@ jobs:
   test-build:
     needs: ['build']
     runs-on: ubuntu-latest
+    # Important: We use the commit message as a trigger for each job
+    if: contains(github.event.head_commit.message, 'Update to version')
     steps:
 
       - name: Check out repository
@@ -79,6 +82,8 @@ jobs:
   create-release:
     needs: ['test-build']
     runs-on: ubuntu-latest
+    # Important: We use the commit message as a trigger for each job
+    if: contains(github.event.head_commit.message, 'Update to version')
     permissions:
       contents: write
     steps:
@@ -101,6 +106,8 @@ jobs:
     # This allows reviewing the files in the release on GitHub.
     environment: publish-pypi
     runs-on: ubuntu-latest
+    # Important: We use the commit message as a trigger for each job
+    if: contains(github.event.head_commit.message, 'Update to version')
     permissions:
       id-token: write
     steps:
