@@ -13,6 +13,12 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
+        # required for 
+      - name: Install pandoc
+        run: |
+          apt-get update
+          apt-get install -y pandoc
+
       - name: Set up Python 3.10
         id: setup-python
         uses: actions/setup-python@v4
